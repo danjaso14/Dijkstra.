@@ -18,6 +18,8 @@ public class Driver {
         HashTable h = new HashTable();
         h.loadCities("USA.txt");
         h.print();
+
+
         System.out.println("\n id: " + h.find("Orlando"));
         System.out.println("\n id: " + h.find("SanDiego"));
         System.out.println("\n id: " + h.find("SanFrancisco"));

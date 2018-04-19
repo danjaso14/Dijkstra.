@@ -26,8 +26,25 @@ public class Graph {
 	 *
 	 * @param filename name of the file that has nodes and edges
 	 */
-	public void loadGraph(String filename) {
+	public void loadGraph(String filename)
+	{
 		// FILL IN CODE
+
+
+
+//            try (FileReader f = new FileReader(filename);
+//                 BufferedReader br = new BufferedReader(f))
+//            {
+//                br.readLine();
+//                br.readLine();
+//
+//            }
+//            catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
+
+
 
 	}
 
@@ -38,7 +55,8 @@ public class Graph {
 	 *
 	 * @param node a CityNode to add to the graph
 	 */
-	public void addNode(CityNode node) {
+	public void addNode(CityNode node)
+	{
 		// FILL IN CODE
 	}
 

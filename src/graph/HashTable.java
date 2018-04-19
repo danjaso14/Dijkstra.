@@ -33,6 +33,7 @@ public class HashTable
 
     private int tableSize;
     private int size;
+    private int nodeId;
     private LinkedHash [] table;
 
 
@@ -40,6 +41,7 @@ public class HashTable
     {
         size = 0;
         tableSize = 20;
+        nodeId = 0;
         table = new LinkedHash[tableSize];
 
         for(int i = 0; i < tableSize; i++)
@@ -67,15 +69,17 @@ public class HashTable
     public void insert(String key, int id)
     {
 
+        int h = myhash(key) % tableSize;
 
-        if(table[id] == null)
+
+        if(table[h] == null)
         {
-            table[id] = new LinkedHash(key,id);
+            table[h] = new LinkedHash(key,id);
         }
 
         else
         {
-            LinkedHash node = table[id];
+            LinkedHash node = table[h];
 
             while (node.next != null && !node.key.equals(key))
             {
@@ -93,14 +97,14 @@ public class HashTable
 
     public int find(String key)
     {
-        int id = myhash(key) % tableSize;
+        int find = myhash(key) % tableSize;
 
-        if(table[id] == null)
+        if(table[find] == null)
             return -1;
 
         else
         {
-            LinkedHash node = table[id];
+            LinkedHash node = table[find];
 
             while(node != null && !node.key.equals(key))
             {
@@ -123,7 +127,7 @@ public class HashTable
             LinkedHash node = table[i];
             while (node != null)
             {
-                System.out.print(node.key +" ");
+                System.out.print(node.key +" " + node.id + " ");
                 node = node.next;
             }
         }
@@ -133,7 +137,6 @@ public class HashTable
 
     public void loadCities(String File)
     {
-
         try (FileReader f = new FileReader(File);
              BufferedReader br = new BufferedReader(f))
         {
@@ -151,8 +154,9 @@ public class HashTable
 
 
                 String key = splitline[0];
-                int id = myhash(key);
-                insert(key, id);
+//                int id = myhash(key);
+                insert(key, nodeId++);
+
 
 
 
