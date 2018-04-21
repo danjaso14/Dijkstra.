@@ -25,6 +25,10 @@ public class Driver {
         System.out.println("\n id: " + h.find("SanFrancisco"));
         System.out.println("\n id: " + h.find("LosAngeles"));
         System.out.println("\n id: " + h.find("Phoenix"));
+        System.out.println("\n id: " + h.find("Chicago"));
+        System.out.println("\n id: " + h.find("LasVegas"));
+
+
 
 
 

@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.LinkedList;
+
 
 
 class LinkedHash
@@ -14,13 +16,19 @@ class LinkedHash
     LinkedHash next;
 
 
+
     LinkedHash (String key, int id)
     {
         this.key = key;
         this.id = id;
         this.next = null;
 
+
     }
+
+
+
+
 
 }
 
@@ -37,6 +45,7 @@ public class HashTable
     private LinkedHash [] table;
 
 
+
     public HashTable ()
     {
         size = 0;
@@ -50,18 +59,24 @@ public class HashTable
 
 
 
-    public int myhash(String key)
+
+    public BigInteger hash(String key)
     {
 
-        int hashvalue = key.hashCode();
-        hashvalue = hashvalue % tableSize;
+        int c;
+        BigInteger r = new BigInteger("0");
+        BigInteger a = new BigInteger("33");
 
-        if(hashvalue < 0)
+        for(int i = 0; i <key.length(); i++)
         {
-            hashvalue = hashvalue + tableSize;
+            c = (int)key.charAt(i);
+            BigInteger big = new BigInteger(String.valueOf(c));
+            r = big.add(r.multiply(a));
+
         }
 
-        return hashvalue;
+
+        return r;
 
 
     }
@@ -69,35 +84,40 @@ public class HashTable
     public void insert(String key, int id)
     {
 
-        int h = myhash(key) % tableSize;
+        BigInteger bigTable = new BigInteger(String.valueOf(tableSize));
+        BigInteger hashing = hash(key);
+        int i = (hashing.mod(bigTable)).intValue();
 
 
-        if(table[h] == null)
+
+        if(table[i] == null)
         {
-            table[h] = new LinkedHash(key,id);
+            table[i] = new LinkedHash(key,id);
+
+
         }
 
         else
         {
-            LinkedHash node = table[h];
 
-            while (node.next != null && !node.key.equals(key))
-            {
-                node = node.next;
-            }
+            LinkedHash nh = new LinkedHash(key,id);
+            nh.next = table[i];
+            table[i] = nh;
 
-            if (node.key.equals(key))
-                node.key = key;
-
-            else
-                node.next = new LinkedHash(key, id);
 
         }
+
     }
+
+
 
     public int find(String key)
     {
-        int find = myhash(key) % tableSize;
+
+
+        BigInteger bigTable = new BigInteger(String.valueOf(tableSize));
+        BigInteger hashing = hash(key);
+        int find = (hashing.mod(bigTable)).intValue();;
 
         if(table[find] == null)
             return -1;
@@ -154,7 +174,6 @@ public class HashTable
 
 
                 String key = splitline[0];
-//                int id = myhash(key);
                 insert(key, nodeId++);
 
 
