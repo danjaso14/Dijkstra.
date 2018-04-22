@@ -49,7 +49,17 @@ public class HashTable
     public HashTable ()
     {
         size = 0;
-        tableSize = 20;
+
+        try (FileReader f = new FileReader("USA.txt");
+             BufferedReader br = new BufferedReader(f))
+        {
+            br.readLine();
+            tableSize = Integer.parseInt(br.readLine());
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
         nodeId = 0;
         table = new LinkedHash[tableSize];
 
@@ -161,7 +171,7 @@ public class HashTable
              BufferedReader br = new BufferedReader(f))
         {
             br.readLine();
-            tableSize = Integer.parseInt(br.readLine());
+            br.readLine();
             String line;
 
 
