@@ -10,31 +10,29 @@ public class PriorityQueue {
     private Element[] heap; // the array to store the heap
     private int maxsize; // the size of the array
     private int size; // the current number of elements in the array
+    private Element sentinel;
 
 
     public PriorityQueue(int max) {
         maxsize = max;
         heap = new Element[maxsize];
         size = 0;
-        heap[0].priority = Integer.MIN_VALUE; // fix
+        sentinel = new Element(Integer.MIN_VALUE, Integer.MIN_VALUE);
+        heap[0] = sentinel;
 
     }
 
-    private int leftChild(int pos) {
-        return 2 * pos;
-    }
+    private int leftChild(int pos) { return 2 * pos;  }
 
     private int rightChild(int pos) {
         return 2 * pos + 1;
     }
 
-    private int parent(int pos) {
-        return pos / 2;
-    }
+    private int parent(int pos) { return pos / 2;  }
 
-    private boolean isLeaf(int pos) {
-        return ((pos > size / 2) && (pos <= size));
-    }
+    private boolean hasParent(int pos) { return pos > 1; }
+
+    private boolean isLeaf(int pos) { return ((pos > size / 2) && (pos <= size)); }
 
     private void swap(int pos1, int pos2)
     {
@@ -43,6 +41,7 @@ public class PriorityQueue {
         heap[pos1] = heap[pos2];
         heap[pos2] = tmp;
     }
+
 
 
 
@@ -77,18 +76,40 @@ public class PriorityQueue {
     {
 		// FILL IN CODE
 
-        swap(1,size);
+        swap(1, size);
         size--; // remove from end of heap
 
 
-//        if(size != 0)
-//            reduceKey(); // fix
+        if(size != 0)
+            pushdown(1);
 
         return heap[size + 1].id;
 
 
 
 	}
+
+
+    private void pushdown(int position)
+    {
+
+        int smallestchild;
+        while (!isLeaf(position))
+        {
+            smallestchild = leftChild(position); // set the smallest child to left child
+            if ((smallestchild < size) && (heap[smallestchild].priority > heap[smallestchild + 1].priority))
+                smallestchild = smallestchild + 1; // right child was smaller, so smallest child = right child
+
+            // the value of the smallest child is less than value of current,
+            // the heap is already valid
+            if (heap[position].priority <= heap[smallestchild].priority)
+                return;
+
+
+            swap(position, smallestchild);
+            position = smallestchild;
+        }
+    }
 
     /**
      * Reduce the priority of the element with the given nodeId to newPriority.
@@ -98,26 +119,36 @@ public class PriorityQueue {
      */
 	public void reduceKey(int nodeId, int newPriority)
 	{
-        int smallestchild;
-        while (!isLeaf(nodeId)) {
-            smallestchild = leftChild(nodeId); // set the smallest child to left child
-            if ((smallestchild < size) && (heap[smallestchild].priority > heap[smallestchild + 1].priority))
-                smallestchild = smallestchild + 1; // right child was smaller, so smallest child = right child
+	    for(int i = 1; i < heap.length; i++)
+        {
+            if(heap[i].id == nodeId)
+            {
+                heap[i].priority = newPriority;
+//                print();
+                pushup(i);
+                break;
+            }
 
-            // the value of the smallest child is less than value of current,
-            // the heap is already valid
-            if (heap[newPriority].priority <= heap[smallestchild].priority)
-                return;
-            swap(nodeId, smallestchild);
-            nodeId = smallestchild;
         }
 
 	}
 
+    private  void pushup(int position)
+    {
+        while (hasParent(position)
+                && heap[position].priority < heap[parent(position)].priority)
+        {
+            swap(position, parent(position));
+            position = parent(position);
+
+
+        }
+    }
+
     public void print() {
         int i;
         for (i = 1; i <= size; i++)
-            System.out.print(heap[i] + " ");
+            System.out.println("Id: " + heap[i].id + " Priority: "+ heap[i].priority);
         System.out.println();
     }
 

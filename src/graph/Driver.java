@@ -15,10 +15,14 @@ public class Driver {
 //            // on two cities:
 //            GUIApp app = new GUIApp(dijkstra, graph);
 
+
+//        =============================================================
+//        HashTable class
+
 //        HashTable h = new HashTable();
 //        h.loadCities("USA.txt");
 //        h.print();
-
+//
 //        System.out.println("\n id: " + h.find("Dallas"));
 
 
@@ -31,22 +35,45 @@ public class Driver {
 //        System.out.println("\n id: " + h.find("LasVegas"));
 
 
-        graph.loadGraph("USA.txt");
-        CityNode c = new CityNode("Dallas", 3.31,1.04);
-        graph.print();
-        int i = graph.getId(c);
-        System.out.println(i);
 
-//        PriorityQueue q = new PriorityQueue(10);
+//==================================================================
+//          Grapgh class
+
+
+//        graph.loadGraph("USA.txt");
+//        CityNode c = new CityNode("Dallas", 3.31,1.04);
+//        graph.print();
+//        int i = graph.getId(c);
+//        System.out.println(i);
+
+
+
+
+//        =====================================================
+//        PriorityQueue class
+
+
+
+        PriorityQueue q = new PriorityQueue(10);
+
+        q.insert(1,500);
+        q.print();
+        q.insert(2, 300);
+        q.print();
+        q.insert(3, 200);
+        q.print();
+        q.insert(4, 250);
+        q.print();
+        q.insert(5, 150);
+        q.print();
+
+        q.reduceKey(1,50);
+        q.print();
+
+//        System.out.println("Remove min");
 //
-//        q.insert(5,100);
-//        q.insert(2, 200);
-//
-//        q.insert(15, 300);
-//        q.insert(1, 400);
-//        q.insert(13, 500);
+//        q.removeMin();
 //        q.print();
-
 
 
 
