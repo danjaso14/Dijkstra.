@@ -18,6 +18,7 @@ public class Graph {
 	private int numNodes;     // total number of nodes
 	private int numEdges; // total number of edges
 	private Edge[] adjacencyList; // adjacency list; for each vertex stores a linked list of edges
+    private HashTable [] table;
     // Your HashTable that maps city names to node ids should probably be here as well
 
 	/**
@@ -32,16 +33,62 @@ public class Graph {
 
 
 
-//            try (FileReader f = new FileReader(filename);
-//                 BufferedReader br = new BufferedReader(f))
-//            {
-//                br.readLine();
-//                br.readLine();
-//
-//            }
-//            catch (IOException e) {
-//                e.printStackTrace();
-//            }
+		try (FileReader f = new FileReader(filename);
+			 BufferedReader br = new BufferedReader(f))
+		{
+			br.readLine();
+			int size = Integer.parseInt(br.readLine());
+			numNodes = 0;
+			String line;
+            nodes = new CityNode[size];
+
+
+
+
+            while ((line = br.readLine()) != null)
+			{
+			    if(line.equals("ARCS"))
+                {
+                    line = br.readLine();
+                    String [] splitline = line.split(" ");
+
+
+
+                    String city1 = splitline[0];
+                    String city2 = splitline[1];
+                    int cost = Integer.parseInt(splitline[3]);
+
+
+
+//                    addEdge();
+
+
+                }
+
+				String [] splitline = line.split(" ");
+
+
+
+				String city = splitline[0];
+				Double x = Double.parseDouble(splitline[1]);
+				Double y = Double.parseDouble(splitline[2]);
+
+				CityNode c = new CityNode(city,x,y);
+                addNode(c);
+
+
+
+
+			}
+
+
+
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
 
 
 
@@ -58,6 +105,10 @@ public class Graph {
 	public void addNode(CityNode node)
 	{
 		// FILL IN CODE
+
+        nodes[numNodes] =  node;
+        numNodes++;
+
 	}
 
 	/**
@@ -75,8 +126,12 @@ public class Graph {
 	 * @param nodeId id of the node
 	 * @param edge edge to add
 	 */
-	public void addEdge(int nodeId, Edge edge) {
+	public void addEdge(int nodeId, Edge edge)
+    {
 		// FILL IN CODE
+
+
+
 	}
 
 	/**
@@ -84,9 +139,16 @@ public class Graph {
 	 * @param city node of the graph
 	 * @return its integer id
 	 */
-	public int getId(CityNode city) {
+	public int getId(CityNode city)
+    {
 
-        return -1; // Don't forget to change this
+        HashTable h = new HashTable();
+        return h.find(city.getCity());
+
+
+
+
+
     }
 
 	/**
@@ -177,4 +239,15 @@ public class Graph {
 		}
 		return null;
 	}
+
+
+
+    public void print()
+    {
+        for (int i = 0; i < nodes.length; i++)
+        {
+            System.out.println("Id: " + i + " " + nodes[i].getCity());
+
+        }
+    }
 }

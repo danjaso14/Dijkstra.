@@ -120,6 +120,32 @@ public class HashTable
     }
 
 
+//    public void remove(String key)
+//    {
+//        BigInteger bigTable = new BigInteger(String.valueOf(tableSize));
+//        BigInteger hashing = hash(key);
+//        int remove = (hashing.mod(bigTable)).intValue();;
+//        if (table[remove] != null)
+//        {
+//            LinkedHash prev = null;
+//            LinkedHash curr = table[remove];
+//            while (curr.next != null && !curr.key.equals(key))
+//            {
+//                prev = curr;
+//                curr = curr.next;
+//            }
+//            if (curr.key.equals(key))
+//            {
+//                if (prev == null)
+//                    table[remove] = curr.next;
+//                else
+//                    prev.next = curr.next;
+//                size--;
+//            }
+//        }
+//    }
+
+
 
     public int find(String key)
     {

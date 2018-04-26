@@ -11,4 +11,12 @@ class Edge {
 
 	// FILL IN CODE: constructor, getters, setters
 
+    Edge(int neighbor, int cost, Edge next)
+    {
+        this.neighbor = neighbor;
+        this.cost = cost;
+        this.next = null;
+    }
+
+
  }
