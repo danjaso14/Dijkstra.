@@ -40,37 +40,29 @@ public class HashTable
 
 
     private int tableSize;
-    private int size;
     private int nodeId;
     private LinkedHash [] table;
 
 
 
-    public HashTable ()
-    {
-        size = 0;
+    public HashTable () {
 
         try (FileReader f = new FileReader("USA.txt");
-             BufferedReader br = new BufferedReader(f))
-        {
+             BufferedReader br = new BufferedReader(f)) {
             br.readLine();
             tableSize = Integer.parseInt(br.readLine());
-        }
-        catch (IOException e) {
+            tableSize = tableSize*2;
+
+            table = new LinkedHash[tableSize];
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-        nodeId = 0;
-        table = new LinkedHash[tableSize];
-
-        for(int i = 0; i < tableSize; i++)
-            table[i] = null;
     }
 
 
-
-
-    public BigInteger hash(String key)
+        public BigInteger hash(String key)
     {
 
         int c;
@@ -120,30 +112,6 @@ public class HashTable
     }
 
 
-//    public void remove(String key)
-//    {
-//        BigInteger bigTable = new BigInteger(String.valueOf(tableSize));
-//        BigInteger hashing = hash(key);
-//        int remove = (hashing.mod(bigTable)).intValue();;
-//        if (table[remove] != null)
-//        {
-//            LinkedHash prev = null;
-//            LinkedHash curr = table[remove];
-//            while (curr.next != null && !curr.key.equals(key))
-//            {
-//                prev = curr;
-//                curr = curr.next;
-//            }
-//            if (curr.key.equals(key))
-//            {
-//                if (prev == null)
-//                    table[remove] = curr.next;
-//                else
-//                    prev.next = curr.next;
-//                size--;
-//            }
-//        }
-//    }
 
 
 
@@ -201,9 +169,8 @@ public class HashTable
             String line;
 
 
-            while ((line = br.readLine()) != null && size < tableSize)
+            while ((line = br.readLine()) != null && !line.equals("ARCS"))
             {
-                size++;
 
                 String [] splitline = line.split(" ");
 

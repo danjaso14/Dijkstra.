@@ -39,11 +39,15 @@ public class Driver {
 //          Graph class
 
 
-//        graph.loadGraph("USA.txt");
-//        CityNode c = new CityNode("Dallas", 3.31,1.04);
-//        graph.print();
-//        int i = graph.getId(c);
-//        System.out.println(i);
+        graph.loadGraph("USA.txt");
+        CityNode c = new CityNode("Dallas", 3.31,1.04);
+        graph.print();
+        int i = graph.getId(c);
+        System.out.println(i);
+        c = new CityNode("Chicago", 3.31,1.04);
+        i = graph.getId(c);
+        System.out.println(i);
+
 
 
 
@@ -56,19 +60,19 @@ public class Driver {
 
         PriorityQueue q = new PriorityQueue(10);
 
-        q.insert(11,500);
-        q.print();
-        q.insert(10, 300);
-        q.print();
-        q.insert(13, 200);
-        q.print();
-        q.insert(14, 250);
-        q.print();
-        q.insert(5, 150);
-        q.print();
-
-      q.reduceKey(11,50);
-      q.print();
+//        q.insert(11,500);
+//        q.print();
+//        q.insert(10, 300);
+//        q.print();
+//        q.insert(13, 200);
+//        q.print();
+//        q.insert(14, 250);
+//        q.print();
+//        q.insert(5, 150);
+//        q.print();
+//
+//      q.reduceKey(11,50);
+//      q.print();
 
 
 //        q.reduceKey(2,50);

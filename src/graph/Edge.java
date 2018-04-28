@@ -15,7 +15,7 @@ class Edge {
     public Edge(int neighbor, int cost, Edge next) {
         this.neighbor = neighbor;
         this.cost = cost;
-        this.next = next;
+        this.next = null;
     }
 
     public int getNeighbor() {
@@ -38,7 +38,7 @@ class Edge {
         this.cost = cost;
     }
 
-    public void setNext(Edge next) {
-        this.next = next;
+    public void setNext(Edge anotherEdge) {
+        this.next = anotherEdge;
     }
 }
