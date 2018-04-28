@@ -11,12 +11,34 @@ class Edge {
 
 	// FILL IN CODE: constructor, getters, setters
 
-    Edge(int neighbor, int cost, Edge next)
-    {
+
+    public Edge(int neighbor, int cost, Edge next) {
         this.neighbor = neighbor;
         this.cost = cost;
-        this.next = null;
+        this.next = next;
     }
 
+    public int getNeighbor() {
+        return neighbor;
+    }
 
- }
+    public int getCost() {
+        return cost;
+    }
+
+    public Edge getNext() {
+        return next;
+    }
+
+    public void setNeighbor(int neighbor) {
+        this.neighbor = neighbor;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public void setNext(Edge next) {
+        this.next = next;
+    }
+}

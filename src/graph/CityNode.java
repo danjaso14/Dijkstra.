@@ -8,6 +8,8 @@ import java.awt.Point;
 public class CityNode  {
 	private final String city;
 	private Point location;
+	private double x;
+	private double y;
 
 	/** Create a node of the graph for the given city (and x and coordinates)
 	 * @param cityName
@@ -37,4 +39,12 @@ public class CityNode  {
 	public String getCity() {
 		return city;
 	}
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
 }

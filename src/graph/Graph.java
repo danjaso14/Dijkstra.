@@ -19,6 +19,7 @@ public class Graph {
 	private int numEdges; // total number of edges
 	private Edge[] adjacencyList; // adjacency list; for each vertex stores a linked list of edges
     private HashTable [] table;
+
     // Your HashTable that maps city names to node ids should probably be here as well
 
 	/**
@@ -45,36 +46,61 @@ public class Graph {
 
 
 
-            while ((line = br.readLine()) != null)
+            while ((line = br.readLine()) != null && !line.equals("ARCS"))
 			{
-			    if(line.equals("ARCS"))
-                {
-                    line = br.readLine();
-                    String [] splitline = line.split(" ");
+//			    if(line.equals("ARCS"))
+//                {
+//                    line = br.readLine();
+//                    String [] splitline = line.split(" ");
+//
+//
+//
+//                    String city1 = splitline[0];
+//                    String city2 = splitline[1];
+//                    int cost = Integer.parseInt(splitline[2]);
+//
+//                    CityNode c1 = new CityNode(city1,0,0);
+//                    CityNode c2 = new CityNode(city2,0,0);
+//
+//
+//                    for(int i = 0; i < nodes.length; i++)
+//                    {
+//                        if(nodes[i].getCity().equals(city1))
+//                        {
+//                            c1 = new CityNode(nodes[i].getCity(), nodes[i].getX(), nodes[i].getY());
+//                            break;
+//
+//                        }
+//                    }
+//
+//
+//
+//                    Edge e1 = new Edge(getId(c2), cost, e2);
+//                    Edge e2 = new Edge(getId(c1), cost, e1);
+//
+//
+//                    addEdge(getId(c1),e1);
+//
+//
+//
+//                }
+
+//                else
+//				{
+					String [] splitline = line.split(" ");
 
 
 
-                    String city1 = splitline[0];
-                    String city2 = splitline[1];
-                    int cost = Integer.parseInt(splitline[3]);
+					String city = splitline[0];
+					Double x = Double.parseDouble(splitline[1]);
+					Double y = Double.parseDouble(splitline[2]);
+
+					CityNode c = new CityNode(city,x,y);
+					addNode(c);
+
+//				}
 
 
-
-//                    addEdge();
-
-
-                }
-
-				String [] splitline = line.split(" ");
-
-
-
-				String city = splitline[0];
-				Double x = Double.parseDouble(splitline[1]);
-				Double y = Double.parseDouble(splitline[2]);
-
-				CityNode c = new CityNode(city,x,y);
-                addNode(c);
 
 
 
@@ -132,6 +158,8 @@ public class Graph {
 
 
 
+
+
 	}
 
 	/**
@@ -142,8 +170,23 @@ public class Graph {
 	public int getId(CityNode city)
     {
 
-        HashTable h = new HashTable();
-        return h.find(city.getCity());
+
+        int id = -1;
+
+        for(int i = 0; i < nodes.length; i++)
+        {
+            if(nodes[i].getCity().equals(city.getCity()))
+            {
+                id = i;
+
+            }
+
+        }
+
+//        HashTable h = new HashTable();
+//        return h.find(city.getCity());
+
+        return id;
 
 
 

@@ -22,7 +22,6 @@ public class Driver {
 //        HashTable h = new HashTable();
 //        h.loadCities("USA.txt");
 //        h.print();
-//
 //        System.out.println("\n id: " + h.find("Dallas"));
 
 
@@ -37,7 +36,7 @@ public class Driver {
 
 
 //==================================================================
-//          Grapgh class
+//          Graph class
 
 
 //        graph.loadGraph("USA.txt");
@@ -49,6 +48,7 @@ public class Driver {
 
 
 
+
 //        =====================================================
 //        PriorityQueue class
 
@@ -56,21 +56,33 @@ public class Driver {
 
         PriorityQueue q = new PriorityQueue(10);
 
-        q.insert(1,500);
+        q.insert(11,500);
         q.print();
-        q.insert(2, 300);
+        q.insert(10, 300);
         q.print();
-        q.insert(3, 200);
+        q.insert(13, 200);
         q.print();
-        q.insert(4, 250);
+        q.insert(14, 250);
         q.print();
         q.insert(5, 150);
         q.print();
 
-        q.reduceKey(1,50);
-        q.print();
+      q.reduceKey(11,50);
+      q.print();
+
+
+//        q.reduceKey(2,50);
+//        q.print();
 
 //        System.out.println("Remove min");
+//
+//        q.removeMin();
+//        q.print();
+//        q.removeMin();
+//        q.print();
+//
+//        q.removeMin();
+//        q.print();
 //
 //        q.removeMin();
 //        q.print();

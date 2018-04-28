@@ -11,6 +11,8 @@ public class PriorityQueue {
     private int maxsize; // the size of the array
     private int size; // the current number of elements in the array
     private Element sentinel;
+    private int [] positions;
+    private int index;
 
 
     public PriorityQueue(int max) {
@@ -19,6 +21,8 @@ public class PriorityQueue {
         size = 0;
         sentinel = new Element(Integer.MIN_VALUE, Integer.MIN_VALUE);
         heap[0] = sentinel;
+        positions = new int[20];
+        index = 1;
 
     }
 
@@ -42,6 +46,14 @@ public class PriorityQueue {
         heap[pos2] = tmp;
     }
 
+    private void swap2(int pos1, int pos2)
+    {
+        int tmp;
+        tmp = positions[pos1];
+        positions[pos1] = positions[pos2];
+        positions[pos2] = tmp;
+    }
+
 
 
 
@@ -55,6 +67,8 @@ public class PriorityQueue {
 
         Element elem = new Element(nodeId, priority);
         size++;
+        positions[size] = index;
+        index++;
         heap[size] = elem;
         int current = size;
 
@@ -62,6 +76,7 @@ public class PriorityQueue {
         {
             swap(current, parent(current));
             current = parent(current);
+
 
         }
 
@@ -119,6 +134,8 @@ public class PriorityQueue {
      */
 	public void reduceKey(int nodeId, int newPriority)
 	{
+
+
 	    for(int i = 1; i < heap.length; i++)
         {
             if(heap[i].id == nodeId)
@@ -148,8 +165,9 @@ public class PriorityQueue {
     public void print() {
         int i;
         for (i = 1; i <= size; i++)
-            System.out.println("Id: " + heap[i].id + " Priority: "+ heap[i].priority);
+            System.out.println("Index: " + positions[i] + " Id: " + heap[i].id + " Priority: "+ heap[i].priority);
         System.out.println();
+
     }
 
 
