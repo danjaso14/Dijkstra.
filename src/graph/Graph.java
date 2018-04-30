@@ -40,37 +40,41 @@ public class Graph {
 			br.readLine();
 			int size = Integer.parseInt(br.readLine());
 			numNodes = 0;
+			numEdges = 0;
 			String line;
             nodes = new CityNode[size];
+            adjacencyList = new Edge[size+1];
             table = new HashTable();
 
 
 
 
-            while ((line = br.readLine()) != null && !line.equals("ARCS"))
+            while ((line = br.readLine()) != null)
 			{
-			    if(line.equals("ARCS"))
+			    if(numNodes > 19)
                 {
-                    line = br.readLine();
-                    String [] splitline = line.split(" ");
+                	if(line.equals("ARCS"))
+						line = br.readLine();
+
+
+					String [] splitline = line.split(" ");
 
 
 
-                    String city1 = splitline[0];
-                    String city2 = splitline[1];
+					int nodeId1 = table.find(splitline[0]);
+					int nodeId2 = table.find(splitline[1]);
                     int cost = Integer.parseInt(splitline[2]);
 
-                    int nodeId = table.find(city1);
-                    int neighborTmp = table.find(city2);
-
-
-//                    Edge tmpEdge = new Edge(neighborTmp, cost, );
-//
-//                    addEdge(nodeId, tmpEdge);
+                    Edge edge1 = new Edge(nodeId1,cost,null);
+					Edge edge2 = new Edge(nodeId2,cost,null);
 
 
 
-                }
+                    addEdge(nodeId2, edge1);
+					addEdge(nodeId1, edge2);
+
+
+				}
 
                 else
 				{
@@ -119,6 +123,8 @@ public class Graph {
 	{
 		// FILL IN CODE
 
+
+
         nodes[numNodes] =  node;
         table.insert(node.getCity(), numNodes);
         numNodes++;
@@ -144,7 +150,27 @@ public class Graph {
     {
 		// FILL IN CODE
 
-        adjacencyList[nodeId] =  edge;
+
+
+        if(adjacencyList[nodeId] == null)
+            adjacencyList[nodeId] = new Edge(edge.getNeighbor(), edge.getCost(), edge.getNext());
+
+        else
+        {
+
+            Edge new_edge = new Edge(edge.getNeighbor(),edge.getCost(), edge.getNext());
+            new_edge.setNext(adjacencyList[nodeId]);
+            adjacencyList[nodeId] = new_edge;
+
+
+        }
+
+
+
+
+
+
+
 
     }
 
@@ -158,7 +184,6 @@ public class Graph {
 
 
         return table.find(city.getCity());
-
 
     }
 
@@ -175,6 +200,8 @@ public class Graph {
 		int i = 0;
 		Point[][] edges2D = new Point[numEdges][2];
 		// FILL IN CODE
+
+
 
 		return edges2D;
 	}
