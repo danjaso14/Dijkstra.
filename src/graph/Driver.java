@@ -48,6 +48,8 @@ public class Driver {
         i = graph.getId(c);
         System.out.println(i);
 
+        graph.getEdges();
+
 
 
 
@@ -58,7 +60,7 @@ public class Driver {
 
 
 
-        PriorityQueue q = new PriorityQueue(10);
+//        PriorityQueue q = new PriorityQueue(10);
 
 //        q.insert(11,500);
 //        q.print();

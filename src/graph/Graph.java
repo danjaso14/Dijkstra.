@@ -165,6 +165,8 @@ public class Graph {
 
         }
 
+        numEdges++;
+
 
 
 
@@ -196,10 +198,30 @@ public class Graph {
 	 * v1 is the source vertex for this edge, v2 is the destination vertex.
 	 * This info can be obtained from the adjacency list
 	 */
-	public Point[][] getEdges() {
-		int i = 0;
+	public Point[][] getEdges()
+    {
+		int count = 0;
 		Point[][] edges2D = new Point[numEdges][2];
-		// FILL IN CODE
+
+        // FILL IN CODE
+
+        for(int i = 0; i < nodes.length; i++)
+        {
+
+            Point source = nodes[i].getLocation();
+            Edge tmp = adjacencyList[i];
+            while (tmp != null)
+            {
+                int neighbor = tmp.getNeighbor();
+                CityNode destination = getNode(neighbor);
+                edges2D[count][0] = source;
+//                System.out.print(nodes[i].getCity() + "\t");
+                edges2D[count][1] = destination.getLocation();
+//                System.out.println(destination.getCity());
+                count++;
+                tmp = tmp.getNext();
+            }
+        }
 
 
 
@@ -255,7 +277,8 @@ public class Graph {
 	 * @param pathOfNodes A list of node ids on the path
 	 * @return array where each element is an array of 2 points
 	 */
-	public Point[][] getPath(List<Integer> pathOfNodes) {
+	public Point[][] getPath(List<Integer> pathOfNodes)
+    {
 		int i = 0;
 		Point[][] edges2D = new Point[pathOfNodes.size()-1][2];
         // Each "edge" is an array of size two (one Point is origin, one Point is destination)
