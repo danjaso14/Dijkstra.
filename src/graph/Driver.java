@@ -8,12 +8,12 @@ public class Driver {
             // Initialize a graph
             Graph graph = new Graph();
 //
-//            // Create an instance of the Dijkstra class
-//            Dijkstra dijkstra = new Dijkstra("USA.txt", graph);
-//
-//            // Create a graphical user interface and wait for user to click
-//            // on two cities:
-//            GUIApp app = new GUIApp(dijkstra, graph);
+            // Create an instance of the Dijkstra class
+            Dijkstra dijkstra = new Dijkstra("USA.txt", graph);
+
+            // Create a graphical user interface and wait for user to click
+            // on two cities:
+            GUIApp app = new GUIApp(dijkstra, graph);
 
 
 //        =============================================================
@@ -39,16 +39,16 @@ public class Driver {
 //          Graph class
 
 
-        graph.loadGraph("USA.txt");
-        CityNode c = new CityNode("Dallas", 3.31,1.04);
-        graph.print();
-        int i = graph.getId(c);
-        System.out.println(i);
-        c = new CityNode("Chicago", 3.31,1.04);
-        i = graph.getId(c);
-        System.out.println(i);
-
-        graph.getEdges();
+//        graph.loadGraph("USA.txt");
+//        CityNode c = new CityNode("Dallas", 3.31,1.04);
+//        graph.print();
+//        int i = graph.getId(c);
+//        System.out.println(i);
+//        c = new CityNode("Chicago", 3.31,1.04);
+//        i = graph.getId(c);
+//        System.out.println(i);
+//
+//        graph.getEdges();
 
 
 

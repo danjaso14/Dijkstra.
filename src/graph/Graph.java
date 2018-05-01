@@ -92,13 +92,7 @@ public class Graph {
 				}
 
 
-
-
-
-
 			}
-
-
 
 		}
 		catch (IOException e) {
@@ -123,8 +117,6 @@ public class Graph {
 	{
 		// FILL IN CODE
 
-
-
         nodes[numNodes] =  node;
         table.insert(node.getCity(), numNodes);
         numNodes++;
@@ -135,9 +127,8 @@ public class Graph {
 	 * Return the number of nodes in the graph
 	 * @return number of nodes
 	 */
-	public int numNodes() {
-		return numNodes;
-	}
+	public int numNodes()
+    {	return numNodes;}
 
 	/**
 	 * Adds the edge to the linked list for the given nodeId
@@ -150,8 +141,6 @@ public class Graph {
     {
 		// FILL IN CODE
 
-
-
         if(adjacencyList[nodeId] == null)
             adjacencyList[nodeId] = new Edge(edge.getNeighbor(), edge.getCost(), edge.getNext());
 
@@ -162,17 +151,9 @@ public class Graph {
             new_edge.setNext(adjacencyList[nodeId]);
             adjacencyList[nodeId] = new_edge;
 
-
         }
 
         numEdges++;
-
-
-
-
-
-
-
 
     }
 
@@ -182,12 +163,7 @@ public class Graph {
 	 * @return its integer id
 	 */
 	public int getId(CityNode city)
-    {
-
-
-        return table.find(city.getCity());
-
-    }
+    { return table.find(city.getCity());  }
 
 	/**
 	 * Return the edges of the graph as a 2D array of points.
