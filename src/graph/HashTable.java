@@ -93,11 +93,8 @@ public class HashTable
 
 
         if(table[i] == null)
-        {
             table[i] = new LinkedHash(key,id);
 
-
-        }
 
         else
         {

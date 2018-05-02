@@ -1,13 +1,14 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** The Driver class for project Dijkstra */
 public class Driver {
     public static void main(String[] args) {
             // Initialize a graph
             Graph graph = new Graph();
-//
+
             // Create an instance of the Dijkstra class
             Dijkstra dijkstra = new Dijkstra("USA.txt", graph);
 
@@ -39,9 +40,9 @@ public class Driver {
 //          Graph class
 
 
-//        graph.loadGraph("USA.txt");
+        graph.loadGraph("USA.txt");
 //        CityNode c = new CityNode("Dallas", 3.31,1.04);
-//        graph.print();
+        graph.print();
 //        int i = graph.getId(c);
 //        System.out.println(i);
 //        c = new CityNode("Chicago", 3.31,1.04);
@@ -49,7 +50,12 @@ public class Driver {
 //        System.out.println(i);
 //
 //        graph.getEdges();
-
+//        List<Integer> list = new ArrayList<>();
+//        list.add(18);
+//        list.add(1);
+//        list.add(3);
+//        list.add(4);
+//        graph.getPath(list);
 
 
 
@@ -74,6 +80,9 @@ public class Driver {
 //        q.print();
 //
 //      q.reduceKey(11,50);
+//      q.print();
+//
+//      q.removeMin();
 //      q.print();
 
 

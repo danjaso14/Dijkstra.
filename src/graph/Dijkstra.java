@@ -35,10 +35,13 @@ public class Dijkstra {
 	    // FILL IN CODE
 
         // Create and initialize Dijkstra's table
-//		Dijkstra dij = new Dijkstra(graph.EPS_DIST);
+//		Dijkstra dj = new Dijkstra()
+
+
 
         // Create and initialize a Priority Queue
 		PriorityQueue pq = new PriorityQueue(20);
+
         // Run Dijkstra
 
         // Compute the nodes on the shortest path by "backtracking" using the table

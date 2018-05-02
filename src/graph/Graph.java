@@ -255,10 +255,28 @@ public class Graph {
 	 */
 	public Point[][] getPath(List<Integer> pathOfNodes)
     {
-		int i = 0;
+		int count = 0;
 		Point[][] edges2D = new Point[pathOfNodes.size()-1][2];
         // Each "edge" is an array of size two (one Point is origin, one Point is destination)
         // FILL IN CODE
+
+        for(int i = 0; i < pathOfNodes.size()-1; i++)
+        {
+
+            int j = i+1;
+            int originId = pathOfNodes.get(i);
+            int destinationId = pathOfNodes.get(j);
+            Point source = nodes[originId].getLocation();
+            Point destination = nodes[destinationId].getLocation();
+            edges2D[count][0] = source;
+//            System.out.print(nodes[originId].getCity() + "\t");
+            edges2D[count][1] = destination;
+//            System.out.println(nodes[destinationId].getCity() + "\t");
+            count++;
+
+
+        }
+
 
         return edges2D;
 	}
@@ -268,9 +286,8 @@ public class Graph {
 	 * @param nodeId id of the node
 	 * @return CityNode
 	 */
-	public CityNode getNode(int nodeId) {
-		return nodes[nodeId];
-	}
+	public CityNode getNode(int nodeId)
+    { return nodes[nodeId];	}
 
 	/**
 	 * Take the location of the mouse click as a parameter, and return the node
