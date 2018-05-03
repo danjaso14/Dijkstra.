@@ -37,14 +37,22 @@ public class Dijkstra {
         // Create and initialize Dijkstra's table
 		int [] cost = new int[graph.numNodes()];
 		int [] path = new int[graph.numNodes()];
+		int sourceV = graph.getId(origin);
 
-        cost[0] = 0;
-		path[0] = -1;
 
-		for(int i = 1; i < graph.numNodes(); i++)
+
+        cost[sourceV] = 0;
+		path[sourceV] = -1;
+
+		for(int i = 0; i < graph.numNodes(); i++)
         {
-            cost[i] = Integer.MAX_VALUE;
-            path[i] = -1;
+            if(i != cost[sourceV])
+            {
+                cost[i] = Integer.MAX_VALUE;
+                path[i] = -1;
+
+            }
+
 
         }
 
@@ -62,7 +70,6 @@ public class Dijkstra {
         {
         	int sourceVertex = pq.removeMin();
 
-//            graph.getEdge(origin);
 
 
             Edge temp = graph.getEdge(sourceVertex);
