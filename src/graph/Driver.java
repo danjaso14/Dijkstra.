@@ -9,11 +9,11 @@ public class Driver {
             // Initialize a graph
             Graph graph = new Graph();
 
-            // Create an instance of the Dijkstra class
+//            // Create an instance of the Dijkstra class
 //            Dijkstra dijkstra = new Dijkstra("USA.txt", graph);
-
-            // Create a graphical user interface and wait for user to click
-            // on two cities:
+//
+//            // Create a graphical user interface and wait for user to click
+//            // on two cities:
 //            GUIApp app = new GUIApp(dijkstra, graph);
 
 
@@ -39,7 +39,7 @@ public class Driver {
 //==================================================================
 //          Graph class
 
-//
+
 //        graph.loadGraph("USA.txt");
 //        graph.print();
 //
@@ -53,6 +53,14 @@ public class Driver {
 //        list.add(4);
 //        System.out.println("\nGet path: ");
 //        graph.getPath(list);
+//
+//        List<Integer> list2 = new ArrayList<>();
+//        list2.add(0);
+//        list2.add(1);
+//        list2.add(17);
+//        list2.add(2);
+//        System.out.println("\nGet path: ");
+//        graph.getPath(list2);
 
 
 
@@ -63,31 +71,44 @@ public class Driver {
 
 
 
-//        PriorityQueue q = new PriorityQueue(10);
+        PriorityQueue q = new PriorityQueue(10);
 
-//        q.insert(11,500);
-//        q.print();
-//        q.insert(10, 300);
-//        q.print();
-//        q.insert(13, 200);
-//        q.print();
-//        q.insert(14, 250);
-//        q.print();
-//        q.insert(5, 150);
+        q.insert(0,500);
+        q.print();
+        q.insert(1, 300);
+        q.print();
+        q.insert(2, 200);
+        q.print();
+        q.insert(3, 250);
+        q.print();
+        q.insert(4, 150);
+        q.print();
+
+        q.removeMin(); // remove 150
+
+        q.removeMin(); // remove 200
+
+
+
+//        q.reduceKey(0,50);
+//        q.reduceKey(1,25);
+
+
+
+
+//        q.removeMin();
 //        q.print();
 //
 //      q.reduceKey(11,50);
 //      q.print();
 //
-//      q.removeMin();
-//      q.print();
-
-
-//        q.reduceKey(2,50);
+//
+//
+//        q.reduceKey(13,25);
 //        q.print();
 
 //        System.out.println("Remove min");
-//
+
 //        q.removeMin();
 //        q.print();
 //        q.removeMin();

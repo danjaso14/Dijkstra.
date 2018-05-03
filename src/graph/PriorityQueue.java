@@ -21,8 +21,8 @@ public class PriorityQueue {
         size = 0;
         sentinel = new Element(Integer.MIN_VALUE, Integer.MIN_VALUE);
         heap[0] = sentinel;
-        positions = new int[20];
-        index = 1;
+        positions = new int[maxsize];
+        index = 0;
 
     }
 
@@ -46,7 +46,7 @@ public class PriorityQueue {
         heap[pos2] = tmp;
     }
 
-    private void swap2(int pos1, int pos2)
+    private void swapIndex(int pos1, int pos2)
     {
         int tmp;
         tmp = positions[pos1];
@@ -67,14 +67,17 @@ public class PriorityQueue {
 
         Element elem = new Element(nodeId, priority);
         size++;
-        positions[size] = index;
-        index++;
         heap[size] = elem;
         int current = size;
+        positions[size-1] = size;
+
+
+
 
         while (heap[current].priority < heap[parent(current)].priority)
         {
             swap(current, parent(current));
+            swapIndex(heap[current].id, heap[parent(current)].id);
             current = parent(current);
 
 
@@ -92,7 +95,11 @@ public class PriorityQueue {
 		// FILL IN CODE
 
         swap(1, size);
+        swapIndex(heap[1].id,  heap[size].id);
+        positions[size-1] = -1;
         size--; // remove from end of heap
+
+
 
 
         if(size != 0)
@@ -122,6 +129,7 @@ public class PriorityQueue {
 
 
             swap(position, smallestchild);
+            swapIndex(position+1, smallestchild+1);
             position = smallestchild;
         }
     }
@@ -156,6 +164,7 @@ public class PriorityQueue {
                 && heap[position].priority < heap[parent(position)].priority)
         {
             swap(position, parent(position));
+            swapIndex(heap[position].id,  heap[parent(position)].id);
             position = parent(position);
 
 
@@ -165,7 +174,7 @@ public class PriorityQueue {
     public void print() {
         int i;
         for (i = 1; i <= size; i++)
-            System.out.println("Index: " + positions[i] + " Id: " + heap[i].id + " Priority: "+ heap[i].priority);
+            System.out.println("Index array: " + positions[i] + " Id: " + heap[i].id + " Priority: "+ heap[i].priority);
         System.out.println();
 
     }

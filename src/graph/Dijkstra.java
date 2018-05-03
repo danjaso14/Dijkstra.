@@ -35,7 +35,7 @@ public class Dijkstra {
 	    // FILL IN CODE
 
         // Create and initialize Dijkstra's table
-//		Dijkstra dj = new Dijkstra()
+
 
 
 
@@ -48,6 +48,27 @@ public class Dijkstra {
 
         // The result should be in an instance variable called "shortestPath" and
         // should also be returned by the method
+
+
+
+//		int nodeId = graph.getId(origin);
+//		graph.getEdges();
+//		pq.insert(nodeId,);
+//
+//
+//		while (pq != null)
+//		{
+//			int u = pq.removeMin();
+//
+//			Edge tmp;
+//			for (tmp = graph[u]; )
+//
+//
+//		}
+
+
+
+
 	    return null; // don't forget to change it
     }
 
