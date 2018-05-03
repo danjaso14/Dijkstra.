@@ -96,7 +96,7 @@ public class PriorityQueue {
 
         swap(1, size);
         swapIndex(heap[1].id,  heap[size].id);
-        positions[size-1] = -1;
+        positions[heap[size].id] = -1;
         size--; // remove from end of heap
 
 
@@ -129,7 +129,7 @@ public class PriorityQueue {
 
 
             swap(position, smallestchild);
-            swapIndex(position+1, smallestchild+1);
+            swapIndex(heap[position].id, heap[smallestchild].id);
             position = smallestchild;
         }
     }

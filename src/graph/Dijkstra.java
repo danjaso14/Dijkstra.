@@ -52,20 +52,47 @@ public class Dijkstra {
         // Create and initialize a Priority Queue
 		PriorityQueue pq = new PriorityQueue(graph.numNodes());
 
-		pq.insert(graph.getId(origin), graph.numNodes());
+		pq.insert(graph.getId(origin), 0);
 
         // Run Dijkstra
 
+        Edge [] e = graph.getAdjacencyList();
+
         while (pq != null)
         {
-            Edge [] e = graph.getAdjacencyList();
+        	int sourceVertex = pq.removeMin();
+//            int sourceVertex = graph.getId(origin);
 
-            Edge temp = e[0];
+            Edge temp = e[sourceVertex];
+
             while (temp != null)
 			{
 				int i = temp.getNeighbor();
-				cost[i] = temp.getCost();
-				path[i] = 0;
+
+				if(cost[i] == Integer.MAX_VALUE)
+                {
+                    cost[i] = temp.getCost();
+                    path[i] = sourceVertex;
+                    pq.insert(temp.getNeighbor(), temp.getCost());
+
+                }
+
+                else
+                {
+                    if(cost[i] > temp.getCost())
+                    {
+                        cost[i] = temp.getCost();
+                        path[i] = sourceVertex;
+                        pq.reduceKey(temp.getNeighbor(), temp.getCost());
+
+                    }
+
+                }
+
+
+
+
+
 
 				temp = temp.getNext();
 			}

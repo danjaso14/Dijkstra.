@@ -9,11 +9,11 @@ public class Driver {
             // Initialize a graph
             Graph graph = new Graph();
 
-            // Create an instance of the Dijkstra class
+//             Create an instance of the Dijkstra class
             Dijkstra dijkstra = new Dijkstra("USA.txt", graph);
 
-            // Create a graphical user interface and wait for user to click
-            // on two cities:
+//             Create a graphical user interface and wait for user to click
+//             on two cities:
             GUIApp app = new GUIApp(dijkstra, graph);
 
             CityNode SF = new CityNode("SanFrancisco", 0.28, 2.31);
@@ -89,10 +89,12 @@ public class Driver {
 //        q.print();
 //        q.insert(4, 150);
 //        q.print();
-//
+////
 //        q.removeMin(); // remove 150
 //
 //        q.removeMin(); // remove 200
+//
+//        q.removeMin(); // remove 250
 
 
 
