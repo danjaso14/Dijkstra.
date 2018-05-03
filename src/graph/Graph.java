@@ -195,9 +195,9 @@ public class Graph {
                 int neighbor = tmp.getNeighbor();
                 CityNode destination = getNode(neighbor);
                 edges2D[count][0] = source;
-                System.out.print(nodes[i].getCity() + "\t");
+//                System.out.print(nodes[i].getCity() + "\t");
                 edges2D[count][1] = destination.getLocation();
-                System.out.println(destination.getCity());
+//                System.out.println(destination.getCity());
                 count++;
                 tmp = tmp.getNext();
             }
@@ -207,6 +207,17 @@ public class Graph {
 
 		return edges2D;
 	}
+
+	public Edge getEdge (int node)
+	{
+		return adjacencyList[node];
+
+
+
+	}
+
+
+
 
 	/**
 	 * Get the nodes of the graph as a 1D array of Points.
@@ -273,9 +284,9 @@ public class Graph {
             Point source = nodes[originId].getLocation();
             Point destination = nodes[destinationId].getLocation();
             edges2D[count][0] = source;
-            System.out.print(nodes[originId].getCity() + "\t");
+//            System.out.print(nodes[originId].getCity() + "\t");
             edges2D[count][1] = destination;
-            System.out.println(nodes[destinationId].getCity() + "\t");
+//            System.out.println(nodes[destinationId].getCity() + "\t");
             count++;
 
 

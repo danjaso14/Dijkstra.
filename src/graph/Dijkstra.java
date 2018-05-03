@@ -56,14 +56,16 @@ public class Dijkstra {
 
         // Run Dijkstra
 
-        Edge [] e = graph.getAdjacencyList();
+//        Edge [] e = graph.getAdjacencyList();
 
         while (pq != null)
         {
         	int sourceVertex = pq.removeMin();
-//            int sourceVertex = graph.getId(origin);
 
-            Edge temp = e[sourceVertex];
+//            graph.getEdge(origin);
+
+
+            Edge temp = graph.getEdge(sourceVertex);
 
             while (temp != null)
 			{
@@ -79,19 +81,17 @@ public class Dijkstra {
 
                 else
                 {
-                    if(cost[i] > temp.getCost())
+                    int new_cost = cost[sourceVertex] + temp.getCost();
+
+                    if(cost[i] > new_cost)
                     {
-                        cost[i] = temp.getCost();
+                        cost[i] = new_cost;
                         path[i] = sourceVertex;
-                        pq.reduceKey(temp.getNeighbor(), temp.getCost());
+                        pq.reduceKey(temp.getNeighbor(), new_cost);
 
                     }
 
                 }
-
-
-
-
 
 
 				temp = temp.getNext();
@@ -99,35 +99,17 @@ public class Dijkstra {
 
 
 
-
-
-
-
-
         }
 
 
         // Compute the nodes on the shortest path by "backtracking" using the table
+        for (int i = 0; i < path.length; i++)
+        {
+            System.out.println(path[i]);
+        }
 
         // The result should be in an instance variable called "shortestPath" and
         // should also be returned by the method
-
-
-
-//		int nodeId = graph.getId(origin);
-//		graph.getEdges();
-//		pq.insert(nodeId,);
-//
-//
-//		while (pq != null)
-//		{
-//			int u = pq.removeMin();
-//
-//			Edge tmp;
-//			for (tmp = graph[u]; )
-//
-//
-//		}
 
 
 

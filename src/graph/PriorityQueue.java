@@ -144,24 +144,27 @@ public class PriorityQueue {
 	{
 
 
-	    for(int i = 1; i < heap.length; i++)
-        {
-            if(heap[i].id == nodeId)
-            {
-                heap[i].priority = newPriority;
-//                print();
-                pushup(i);
-                break;
-            }
+//	    for(int i = 1; i < heap.length; i++)
+//        {
+//            if(heap[i].id == nodeId)
+//            {
+//                heap[i].priority = newPriority;
+////                print();
+//                pushup(i);
+//                break;
+//            }
+//
+//        }
 
-        }
+        int i = positions[nodeId];
+        heap[i].priority = newPriority;
+        pushup(i);
 
 	}
 
     private  void pushup(int position)
     {
-        while (hasParent(position)
-                && heap[position].priority < heap[parent(position)].priority)
+        while (heap[position].priority < heap[parent(position)].priority)
         {
             swap(position, parent(position));
             swapIndex(heap[position].id,  heap[parent(position)].id);
