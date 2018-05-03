@@ -35,14 +35,50 @@ public class Dijkstra {
 	    // FILL IN CODE
 
         // Create and initialize Dijkstra's table
+		int [] cost = new int[graph.numNodes()];
+		int [] path = new int[graph.numNodes()];
 
+        cost[0] = 0;
+		path[0] = -1;
 
+		for(int i = 1; i < graph.numNodes(); i++)
+        {
+            cost[i] = Integer.MAX_VALUE;
+            path[i] = -1;
+
+        }
 
 
         // Create and initialize a Priority Queue
-		PriorityQueue pq = new PriorityQueue(20);
+		PriorityQueue pq = new PriorityQueue(graph.numNodes());
+
+		pq.insert(graph.getId(origin), graph.numNodes());
 
         // Run Dijkstra
+
+        while (pq != null)
+        {
+            Edge [] e = graph.getAdjacencyList();
+
+            Edge temp = e[0];
+            while (temp != null)
+			{
+				int i = temp.getNeighbor();
+				cost[i] = temp.getCost();
+				path[i] = 0;
+
+				temp = temp.getNext();
+			}
+
+
+
+
+
+
+
+
+        }
+
 
         // Compute the nodes on the shortest path by "backtracking" using the table
 

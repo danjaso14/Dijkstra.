@@ -130,6 +130,10 @@ public class Graph {
 	public int numNodes()
     {	return numNodes;}
 
+	public Edge[] getAdjacencyList() {
+		return adjacencyList;
+	}
+
 	/**
 	 * Adds the edge to the linked list for the given nodeId
 	 * Called from loadGraph.

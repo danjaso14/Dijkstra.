@@ -9,12 +9,18 @@ public class Driver {
             // Initialize a graph
             Graph graph = new Graph();
 
-//            // Create an instance of the Dijkstra class
-//            Dijkstra dijkstra = new Dijkstra("USA.txt", graph);
-//
-//            // Create a graphical user interface and wait for user to click
-//            // on two cities:
-//            GUIApp app = new GUIApp(dijkstra, graph);
+            // Create an instance of the Dijkstra class
+            Dijkstra dijkstra = new Dijkstra("USA.txt", graph);
+
+            // Create a graphical user interface and wait for user to click
+            // on two cities:
+            GUIApp app = new GUIApp(dijkstra, graph);
+
+            CityNode SF = new CityNode("SanFrancisco", 0.28, 2.31);
+            CityNode OR = new CityNode("Orlando", 5.4, 0.5);
+
+
+        dijkstra.computeShortestPath(SF, OR);
 
 
 //        =============================================================
@@ -71,22 +77,22 @@ public class Driver {
 
 
 
-        PriorityQueue q = new PriorityQueue(10);
-
-        q.insert(0,500);
-        q.print();
-        q.insert(1, 300);
-        q.print();
-        q.insert(2, 200);
-        q.print();
-        q.insert(3, 250);
-        q.print();
-        q.insert(4, 150);
-        q.print();
-
-        q.removeMin(); // remove 150
-
-        q.removeMin(); // remove 200
+//        PriorityQueue q = new PriorityQueue(10);
+//
+//        q.insert(0,500);
+//        q.print();
+//        q.insert(1, 300);
+//        q.print();
+//        q.insert(2, 200);
+//        q.print();
+//        q.insert(3, 250);
+//        q.print();
+//        q.insert(4, 150);
+//        q.print();
+//
+//        q.removeMin(); // remove 150
+//
+//        q.removeMin(); // remove 200
 
 
 
