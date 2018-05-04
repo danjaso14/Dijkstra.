@@ -195,9 +195,9 @@ public class Graph {
                 int neighbor = tmp.getNeighbor();
                 CityNode destination = getNode(neighbor);
                 edges2D[count][0] = source;
-//                System.out.print(nodes[i].getCity() + "\t");
+                System.out.print(nodes[i].getCity() + "\t");
                 edges2D[count][1] = destination.getLocation();
-//                System.out.println(destination.getCity());
+                System.out.println(destination.getCity());
                 count++;
                 tmp = tmp.getNext();
             }

@@ -69,7 +69,7 @@ public class PriorityQueue {
         size++;
         heap[size] = elem;
         int current = size;
-        positions[size-1] = size;
+        positions[nodeId] = size;
 
 
 
@@ -164,7 +164,8 @@ public class PriorityQueue {
 
     private  void pushup(int position)
     {
-        while (heap[position].priority < heap[parent(position)].priority)
+        while (hasParent(position)
+                && heap[position].priority < heap[parent(position)].priority)
         {
             swap(position, parent(position));
             swapIndex(heap[position].id,  heap[parent(position)].id);

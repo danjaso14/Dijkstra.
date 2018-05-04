@@ -16,11 +16,11 @@ public class Driver {
 //             on two cities:
             GUIApp app = new GUIApp(dijkstra, graph);
 
-            CityNode SF = new CityNode("SanFrancisco", 0.28, 2.31);
+            CityNode SE = new CityNode("Seattle", 0.68, 3.71);
             CityNode OR = new CityNode("Orlando", 5.4, 0.5);
 
 
-        dijkstra.computeShortestPath(SF, OR);
+        dijkstra.computeShortestPath(SE, OR);
 
 
 //        =============================================================

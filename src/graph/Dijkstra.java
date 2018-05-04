@@ -35,6 +35,7 @@ public class Dijkstra {
 	    // FILL IN CODE
 
         // Create and initialize Dijkstra's table
+
 		int [] cost = new int[graph.numNodes()];
 		int [] path = new int[graph.numNodes()];
 		int sourceV = graph.getId(origin);
@@ -46,15 +47,18 @@ public class Dijkstra {
 
 		for(int i = 0; i < graph.numNodes(); i++)
         {
-            if(i != cost[sourceV])
+            if(i != sourceV)
             {
                 cost[i] = Integer.MAX_VALUE;
                 path[i] = -1;
 
             }
 
-
         }
+
+
+
+
 
 
         // Create and initialize a Priority Queue
@@ -69,8 +73,6 @@ public class Dijkstra {
         while (pq != null)
         {
         	int sourceVertex = pq.removeMin();
-
-
 
             Edge temp = graph.getEdge(sourceVertex);
 
@@ -103,6 +105,8 @@ public class Dijkstra {
 
 				temp = temp.getNext();
 			}
+
+
 
 
 
