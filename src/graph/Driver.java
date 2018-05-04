@@ -20,7 +20,9 @@ public class Driver {
             CityNode OR = new CityNode("Orlando", 5.4, 0.5);
 
 
-        dijkstra.computeShortestPath(SE, OR);
+        List<Integer> result = dijkstra.computeShortestPath(SE, OR);
+
+        graph.getPath(result);
 
 
 //        =============================================================
@@ -45,7 +47,7 @@ public class Driver {
 //==================================================================
 //          Graph class
 
-
+//
 //        graph.loadGraph("USA.txt");
 //        graph.print();
 //

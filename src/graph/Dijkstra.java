@@ -30,9 +30,12 @@ public class Dijkstra {
 	 * @param destination destination node
      * @return the ArrayList of nodeIds (of nodes on the shortest path)
 	 */
-	public List<Integer> computeShortestPath(CityNode origin, CityNode destination) {
+	public List<Integer> computeShortestPath(CityNode origin, CityNode destination)
+    {
 
 	    // FILL IN CODE
+
+        List<Integer> shortestPath = new ArrayList<>();
 
         // Create and initialize Dijkstra's table
 
@@ -70,42 +73,52 @@ public class Dijkstra {
 
 //        Edge [] e = graph.getAdjacencyList();
 
-        while (pq != null)
+        while (!pq.isEmpty())
         {
         	int sourceVertex = pq.removeMin();
 
-            Edge temp = graph.getEdge(sourceVertex);
+        	if(sourceVertex != graph.getId(destination))
+            {
 
-            while (temp != null)
-			{
-				int i = temp.getNeighbor();
+                Edge temp = graph.getEdge(sourceVertex);
 
-				if(cost[i] == Integer.MAX_VALUE)
+                while (temp != null)
                 {
-                    cost[i] = temp.getCost();
-                    path[i] = sourceVertex;
-                    pq.insert(temp.getNeighbor(), temp.getCost());
+                    int i = temp.getNeighbor();
 
-                }
-
-
-                else
-                {
-                    int new_cost = cost[sourceVertex] + temp.getCost();
-
-                    if(cost[i] > new_cost)
+                    if(cost[i] == Integer.MAX_VALUE)
                     {
-                        cost[i] = new_cost;
+                        cost[i] = temp.getCost();
                         path[i] = sourceVertex;
-                        pq.reduceKey(temp.getNeighbor(), new_cost);
+                        pq.insert(temp.getNeighbor(), temp.getCost());
 
                     }
 
+
+                    else
+                    {
+                        int new_cost = cost[sourceVertex] + temp.getCost();
+
+                        if(cost[i] > new_cost)
+                        {
+                            cost[i] = new_cost;
+                            path[i] = sourceVertex;
+                            pq.reduceKey(temp.getNeighbor(), new_cost);
+
+                        }
+
+                    }
+
+
+                    temp = temp.getNext();
                 }
 
+            }
 
-				temp = temp.getNext();
-			}
+            else
+                break;
+
+
 
 
 
@@ -117,16 +130,29 @@ public class Dijkstra {
         // Compute the nodes on the shortest path by "backtracking" using the table
         for (int i = 0; i < path.length; i++)
         {
-            System.out.println(path[i]);
+            System.out.println("NodeId: " + i + " Cost: " + cost[i] + " Path: " + path[i]);
         }
 
         // The result should be in an instance variable called "shortestPath" and
         // should also be returned by the method
 
+//        int j = 0;
+//        while(j != graph.getId(origin))
+//        {
+//            j = 0
+//
+//
+//        }
+
+//        shortestPath.add(13);
+//        shortestPath.add(19);
+//        shortestPath.add(15);
+//        shortestPath.add(2);
 
 
 
-	    return null; // don't forget to change it
+
+	    return shortestPath; // don't forget to change it
     }
 
     /**

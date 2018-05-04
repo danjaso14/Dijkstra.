@@ -13,6 +13,7 @@ public class PriorityQueue {
     private Element sentinel;
     private int [] positions;
     private int index;
+    private int counter;
 
 
     public PriorityQueue(int max) {
@@ -23,6 +24,7 @@ public class PriorityQueue {
         heap[0] = sentinel;
         positions = new int[maxsize];
         index = 0;
+         counter = maxsize-1;
 
     }
 
@@ -94,10 +96,22 @@ public class PriorityQueue {
     {
 		// FILL IN CODE
 
+
         swap(1, size);
-        swapIndex(heap[1].id,  heap[size].id);
         positions[heap[size].id] = -1;
+        swapIndex(heap[1].id,  heap[size].id);
+
         size--; // remove from end of heap
+
+
+//        swap(1, size);
+//        swapIndex(heap[1].id,  heap[size].id);
+//        positions[heap[size].id] = -1;
+//        size--; // remove from end of heap
+
+
+
+
 
 
 
@@ -173,6 +187,11 @@ public class PriorityQueue {
 
 
         }
+    }
+
+    public boolean isEmpty()
+    {
+        return size == 0;
     }
 
     public void print() {
