@@ -10,10 +10,9 @@ public class PriorityQueue {
     private Element[] heap; // the array to store the heap
     private int maxsize; // the size of the array
     private int size; // the current number of elements in the array
-    private Element sentinel;
-    private int [] positions;
-    private int index;
-    private int counter;
+    private Element sentinel; // sentinel store in the first position of the heap
+    private int [] positions; // array that keeps track of the nodeId position in the heap array
+
 
 
     public PriorityQueue(int max) {
@@ -23,23 +22,18 @@ public class PriorityQueue {
         sentinel = new Element(Integer.MIN_VALUE, Integer.MIN_VALUE);
         heap[0] = sentinel;
         positions = new int[maxsize];
-        index = 0;
 
     }
 
-    private int leftChild(int pos) { return 2 * pos;  }
+    private int leftChild(int pos) { return 2 * pos;  } // gets the left child of a certain position
 
-    private int rightChild(int pos) {
-        return 2 * pos + 1;
-    }
+    private int parent(int pos) { return pos / 2;  } // gets the parent of a certain position
 
-    private int parent(int pos) { return pos / 2;  }
+    private boolean hasParent(int pos) { return pos > 1; } // checks if node has a parent
 
-    private boolean hasParent(int pos) { return pos > 1; }
+    private boolean isLeaf(int pos) { return ((pos > size / 2) && (pos <= size)); }  // check if node is a leaf
 
-    private boolean isLeaf(int pos) { return ((pos > size / 2) && (pos <= size)); }
-
-    private void swap(int pos1, int pos2)
+    private void swap(int pos1, int pos2)   // swaps elements on the heap
     {
         Element tmp;
         tmp = heap[pos1];
@@ -47,7 +41,7 @@ public class PriorityQueue {
         heap[pos2] = tmp;
     }
 
-    private void swapIndex(int pos1, int pos2)
+    private void swapIndex(int pos1, int pos2)  // swaps elements on the positions array (which is the array used to swap indices)
     {
         int tmp;
         tmp = positions[pos1];
@@ -61,7 +55,8 @@ public class PriorityQueue {
     /** Insert a new element (nodeId, priority) into the heap.
      *  For this project, the priority is the current "distance"
      *  for this nodeId in Dikstra's algorithm. */
-	public void insert(int nodeId, int priority)
+	public void insert(int nodeId, int priority)        // Inserts new node in the heap and cheks if it is needed to swap, depeding
+                                                        // if that new value is less than its parent.
     {
 		// FILL IN CODE
 
@@ -91,7 +86,7 @@ public class PriorityQueue {
      * from the min heap and return its nodeId.
      * @return nodeId of the element with the smallest priority
      */
-	public int removeMin()
+	public int removeMin()          // removes minimun element of queue, and calls pushdown
     {
 		// FILL IN CODE
 
@@ -99,19 +94,7 @@ public class PriorityQueue {
         swap(1, size);
         positions[heap[size].id] = -1;
         swapIndex(heap[1].id,  heap[size].id);
-
         size--; // remove from end of heap
-
-
-//        swap(1, size);
-//        swapIndex(heap[1].id,  heap[size].id);
-//        positions[heap[size].id] = -1;
-//        size--; // remove from end of heap
-
-
-
-
-
 
 
 
@@ -125,7 +108,8 @@ public class PriorityQueue {
 	}
 
 
-    private void pushdown(int position)
+    private void pushdown(int position)     // bubbles down to adjust the queue whenever removeMin is called
+                                            // on the queue is less than its parent until it reaches its proper spot
     {
 
         int smallestchild;
@@ -153,22 +137,8 @@ public class PriorityQueue {
      * @param nodeId id of the node
      * @param newPriority new value of priority
      */
-	public void reduceKey(int nodeId, int newPriority)
+	public void reduceKey(int nodeId, int newPriority)      // reduces the priority (cost) for a specific nodeId and calls pushup
 	{
-
-
-//	    for(int i = 1; i < heap.length; i++)
-//        {
-//            if(heap[i].id == nodeId)
-//            {
-//                heap[i].priority = newPriority;
-////                print();
-//                pushup(i);
-//                break;
-//            }
-//
-//        }
-
 
         int i = positions[nodeId];
 
@@ -182,10 +152,9 @@ public class PriorityQueue {
         else
             return;
 
-
 	}
 
-    private  void pushup(int position)
+    private  void pushup(int position)      // bubbles up whenever a value is called on reduce key, if that value is less than its parent
     {
         while (hasParent(position)
                 && heap[position].priority < heap[parent(position)].priority)
@@ -198,7 +167,7 @@ public class PriorityQueue {
         }
     }
 
-    public boolean isEmpty()
+    public boolean isEmpty()    // check if priority queue is empty
     {
         return size == 0;
     }

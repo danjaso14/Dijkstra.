@@ -36,24 +36,21 @@ public class Dijkstra {
 	    // FILL IN CODE
 
 
-        // FILL IN CODE
-
-        // Create and initialize Dijkstra's table
-        // Create and initialize a Priority Queue
+        // Creattion and initialization Dijkstra's table and  Priority Queue
 
         int [] cost = new int[graph.numNodes()];
         int [] path = new int[graph.numNodes()];
         PriorityQueue pq = new PriorityQueue(graph.numNodes()+1);
 
-        int sourceV = graph.getId(origin);
+        int sourceOrigin = graph.getId(origin);
 
-        cost[sourceV] = 0;
-        path[sourceV] = -1;
-        pq.insert(sourceV, 0);
+        cost[sourceOrigin] = 0;
+        path[sourceOrigin] = -1;
+        pq.insert(sourceOrigin, 0);
 
         for(int i = 0; i < graph.numNodes(); i++)
         {
-            if(i != sourceV)
+            if(i != sourceOrigin)
             {
                 cost[i] = Integer.MAX_VALUE;
                 path[i] = -1;
@@ -65,15 +62,13 @@ public class Dijkstra {
         }
 
 
-//        System.out.println("");
-
         // Run Dijkstra
 
-        while (!pq.isEmpty())
+        while (!pq.isEmpty()) // checks if priority queue is empty or not
         {
-            int sourceVertex = pq.removeMin();
+            int sourceVertex = pq.removeMin(); // removes min values from heap
 
-            if(sourceVertex != graph.getId(destination))
+            if(sourceVertex != graph.getId(destination))  // iterate though all the neighbors of the sourceVertex
             {
                 Edge temp = graph.getEdge(sourceVertex);
 
@@ -98,6 +93,7 @@ public class Dijkstra {
 
 
             }
+
             else
             {
                 break;
@@ -108,7 +104,7 @@ public class Dijkstra {
 
 
 
-        for (int i = 0; i < path.length; i++)
+        for (int i = 0; i < path.length; i++)       // extra just to visually see Dijkstra's table on the console
         {
             System.out.println("NodeId: " + i + " Cost: " + cost[i] + " Path: " + path[i]);
         }
@@ -122,16 +118,15 @@ public class Dijkstra {
 
         shortestPath = new ArrayList<>();
         int id = graph.getId(destination);
-        shortestPath.add(graph.getId(destination));
+        shortestPath.add(graph.getId(destination));     // backtrack of shortestPath to pass this list and paint it on the GUI on all node are collected.
         while (id != graph.getId(origin))
         {
-
             shortestPath.add(path[id]);
             id = path[id];
         }
 
 
-	    return shortestPath; // don't forget to change it
+	    return shortestPath;
     }
 
     /**

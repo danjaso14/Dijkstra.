@@ -18,7 +18,7 @@ public class Graph {
 	private int numNodes;     // total number of nodes
 	private int numEdges; // total number of edges
 	private Edge[] adjacencyList; // adjacency list; for each vertex stores a linked list of edges
-    private HashTable table;
+    private HashTable table; // hashtable that maps city names to node ids
 
     // Your HashTable that maps city names to node ids should probably be here as well
 
@@ -127,12 +127,8 @@ public class Graph {
 	 * Return the number of nodes in the graph
 	 * @return number of nodes
 	 */
-	public int numNodes()
-    {	return numNodes;}
+	public int numNodes() {	return numNodes;}
 
-	public Edge[] getAdjacencyList() {
-		return adjacencyList;
-	}
 
 	/**
 	 * Adds the edge to the linked list for the given nodeId
@@ -208,13 +204,8 @@ public class Graph {
 		return edges2D;
 	}
 
-	public Edge getEdge (int node)
-	{
-		return adjacencyList[node];
-
-
-
-	}
+	public Edge getEdge (int node) // gets the adjacency list for a specific node
+	{ return adjacencyList[node]; }
 
 
 
@@ -321,12 +312,4 @@ public class Graph {
 
 
 
-    public void print()
-    {
-        for (int i = 0; i < nodes.length; i++)
-        {
-            System.out.println("Id: " + i + " " + nodes[i].getCity());
-
-        }
-    }
 }

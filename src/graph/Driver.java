@@ -16,13 +16,15 @@ public class Driver {
 //             on two cities:
             GUIApp app = new GUIApp(dijkstra, graph);
 
-            CityNode SE = new CityNode("Phoenix", 1.47, 1.39);
-            CityNode OR = new CityNode("Boston", 6.22, 2.9);
 
 
-        List<Integer> result = dijkstra.computeShortestPath(SE, OR);
-
-        graph.getPath(result);
+//            CityNode origin = new CityNode("Phoenix", 1.47, 1.39);
+//            CityNode destination = new CityNode("Boston", 6.22, 2.9);
+//
+//
+//        List<Integer> result = dijkstra.computeShortestPath(origin, destination);
+//
+//        graph.getPath(result);
 
 
 //        =============================================================
@@ -129,11 +131,6 @@ public class Driver {
 //
 //        q.removeMin();
 //        q.print();
-
-
-
-
-
 
     }
 }

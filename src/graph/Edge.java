@@ -18,15 +18,15 @@ class Edge {
         this.next = null;
     }
 
-    public int getNeighbor() {
+    public int getNeighbor() {  // getter for getting the neighbor of the edge
         return neighbor;
     }
 
-    public int getCost() {
+    public int getCost() { // getter for getting the cost of the edge
         return cost;
     }
 
-    public Edge getNext() {
+    public Edge getNext() { // getter for getting next node of the edge
         return next;
     }
 
@@ -38,7 +38,7 @@ class Edge {
         this.cost = cost;
     }
 
-    public void setNext(Edge anotherEdge) {
+    public void setNext(Edge anotherEdge) { // setter for setting an edge to another one
         this.next = anotherEdge;
     }
 }
