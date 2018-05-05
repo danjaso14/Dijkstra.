@@ -65,7 +65,7 @@ public class Dijkstra {
         }
 
 
-        System.out.println("");
+//        System.out.println("");
 
         // Run Dijkstra
 
@@ -120,12 +120,15 @@ public class Dijkstra {
         // should also be returned by the method
 
 
-//        int id = graph.getId(destination);
-//        while (id != graph.getId(origin))
-//        {
-//            int i = 0;
-//            int tempId = path[i];
-//        }
+        shortestPath = new ArrayList<>();
+        int id = graph.getId(destination);
+        shortestPath.add(graph.getId(destination));
+        while (id != graph.getId(origin))
+        {
+
+            shortestPath.add(path[id]);
+            id = path[id];
+        }
 
 
 	    return shortestPath; // don't forget to change it
