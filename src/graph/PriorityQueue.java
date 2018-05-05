@@ -169,9 +169,19 @@ public class PriorityQueue {
 //
 //        }
 
+
         int i = positions[nodeId];
-        heap[i].priority = newPriority;
-        pushup(i);
+
+        if( i != -1)
+        {
+            heap[i].priority = newPriority;
+            pushup(i);
+
+        }
+
+        else
+            return;
+
 
 	}
 
