@@ -24,7 +24,6 @@ public class PriorityQueue {
         heap[0] = sentinel;
         positions = new int[maxsize];
         index = 0;
-         counter = maxsize-1;
 
     }
 

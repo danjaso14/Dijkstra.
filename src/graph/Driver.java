@@ -15,14 +15,14 @@ public class Driver {
 //             Create a graphical user interface and wait for user to click
 //             on two cities:
             GUIApp app = new GUIApp(dijkstra, graph);
+//
+//            CityNode SE = new CityNode("Seattle", 0.68, 3.71);
+//            CityNode OR = new CityNode("Orlando", 5.4, 0.5);
 
-            CityNode SE = new CityNode("Seattle", 0.68, 3.71);
-            CityNode OR = new CityNode("Orlando", 5.4, 0.5);
 
-
-        List<Integer> result = dijkstra.computeShortestPath(SE, OR);
-
-        graph.getPath(result);
+//        List<Integer> result = dijkstra.computeShortestPath(SE, OR);
+//
+//        graph.getPath(result);
 
 
 //        =============================================================
@@ -47,13 +47,13 @@ public class Driver {
 //==================================================================
 //          Graph class
 
-//
+
 //        graph.loadGraph("USA.txt");
 //        graph.print();
-//
-//        System.out.println("\nGet edges: ");
-//        graph.getEdges();
-//
+////
+////        System.out.println("\nGet edges: ");
+////        graph.getEdges();
+////
 //        List<Integer> list = new ArrayList<>();
 //        list.add(18);
 //        list.add(1);
@@ -64,9 +64,9 @@ public class Driver {
 //
 //        List<Integer> list2 = new ArrayList<>();
 //        list2.add(0);
-//        list2.add(1);
+//        list2.add(18);
 //        list2.add(17);
-//        list2.add(2);
+////        list2.add(2);
 //        System.out.println("\nGet path: ");
 //        graph.getPath(list2);
 
